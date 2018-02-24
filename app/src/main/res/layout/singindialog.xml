@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_grey_900"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <RelativeLayout
         android:id="@+id/sign_in_button"
@@ -21,7 +21,6 @@
             android:layout_centerInParent="true"
             android:background="@drawable/googlebutton"
             android:onClick="signIn"
-
             />
     </RelativeLayout>
 
@@ -34,7 +33,6 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         tools:visibility="visible"
-
         >
 
         <Button
@@ -44,7 +42,8 @@
             android:layout_weight="1"
             android:onClick="signOut"
             android:text="@string/sign_out"
-            android:theme="@style/ThemeOverlay.MyDarkButton" />
+            android:theme="@style/ThemeOverlay.MyDarkButton"
+            />
 
         <Button
             android:id="@+id/disconnect_button"
@@ -53,13 +52,15 @@
             android:layout_weight="1"
             android:onClick="disconnect"
             android:text="@string/disconnect"
-            android:theme="@style/ThemeOverlay.MyDarkButton" />
+            android:theme="@style/ThemeOverlay.MyDarkButton"
+            />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="saveDialog"
-            android:text="close" />
+            android:text="close"
+            />
     </LinearLayout>
 
 </RelativeLayout>
