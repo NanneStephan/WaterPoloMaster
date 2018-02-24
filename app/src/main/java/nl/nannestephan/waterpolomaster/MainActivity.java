@@ -30,20 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void login(View view) {
-        setContentView(R.layout.singindialog);
         Intent login = new Intent(MainActivity.this,
                 LoginActivity.class);
         startActivity(login);
 
     }
-
-
     /**
      * Team A buttons
      */
     public void teamOneAddOne(View view) {
-
-
+        scoreTeamTwo = scoreTeamTwo - 1;
+        scoreTeamOne(scoreTeamTwo);
     }
 
     public void teamOneRemoveOne(View view) {

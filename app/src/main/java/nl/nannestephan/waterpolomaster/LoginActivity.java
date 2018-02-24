@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void saveDialog(View view) {
-        setContentView(R.layout.activity_main);
         Intent login = new Intent(LoginActivity.this,
                 MainActivity.class);
         startActivity(login);
