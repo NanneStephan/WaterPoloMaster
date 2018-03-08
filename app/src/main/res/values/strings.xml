@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">WaterPoloMaster</string>
+    <!-- Buttons-->
+    <string name="Start_Fault">Start Fault</string>
+    <string name="Stop_Fault">Stop</string>
+    <string name="Restart_Fault">Restart</string>
+    <string name="Zero">0</string>
+    <string name="ScorePlus">+ 1 Score</string>
+    <string name="ScoreMinus">- 1 Score</string>
+    <string name="FaultText">Fault Time</string>
+    <!-- Team 1 & 2 -->
+    <string name="TeamName">Team Name</string>
+
+
+
+
+
+
     <!-- Google -->
     <string name="signed_in_fmt">Signed in as: %s</string>
     <string name="signed_in">Signed in</string>
