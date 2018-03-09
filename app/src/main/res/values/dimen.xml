@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="textSizeTeam">20sp</dimen>
+    <!-- margin score board -->
+    <dimen name="left">20dp</dimen>
+    <dimen name="right">30dp</dimen>
+    <dimen name="height">110dp</dimen>
+    <dimen name="elevation">20dp</dimen>
+    <!-- timer -->
+    <dimen name="textSizeTimer">20sp</dimen>
+    <dimen name="widthTimer">30dp</dimen>
+    <dimen name="heightTimer">30dp</dimen>
+    <dimen name="paddingTimer">3dp</dimen>
+    <dimen name="marginTimer">5dp</dimen>
 </resources>

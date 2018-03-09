@@ -1,6 +1,5 @@
 package nl.nannestephan.waterpolomaster;
 
-
 import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
@@ -24,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     static final String lastScoreTeamOne = "ScoreTeamA";
     static final String lastScoreTeamTwo = "ScoreTeamB";
 
-
     Dialog ThisDialog;
 
     CountDownTimer timer;
@@ -42,6 +40,20 @@ public class MainActivity extends AppCompatActivity {
     private TextView CounterOne;
     private TextView CounterTwo;
 
+    EditText TeamOne;
+    EditText TeamTwo;
+
+    TextView TeamOneEdit;
+    TextView TeamTwoEdit;
+    TextView scoreViewOne;
+    TextView scoreViewTwo;
+
+    Button saveDialog;
+
+    /**
+     * save's score and team name
+     */
+
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt(lastScoreTeamOne, scoreTeamOne);
@@ -50,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putInt(lastTeamNameOne, nameTeamOne);
         savedInstanceState.putInt(lastTeamNameTwo, nameTeamTwo);
 
-
-
-
         super.onSaveInstanceState(savedInstanceState);
-
     }
+
+    /**
+     * Restores on rotation
+     */
 
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
@@ -71,10 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
             displayForTeamOne(nameTeamOne);
             displayForTeamTwo(nameTeamTwo);
-
-
         }
-
     }
 
 
@@ -82,8 +91,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         CounterOne = findViewById(R.id.timeCounterOne);
         CounterTwo = findViewById(R.id.timeCounterTwo);
+
+        TeamOneEdit = findViewById(R.id.TeamOneEdit);
+        TeamTwoEdit = findViewById(R.id.TeamTwoEdit);
+
+        scoreViewOne = findViewById(R.id.scoreTeamOne);
+        scoreViewTwo = findViewById(R.id.scoreTeamTwo);
+
     }
 
     /**
@@ -97,45 +114,35 @@ public class MainActivity extends AppCompatActivity {
         ThisDialog = new Dialog(MainActivity.this);
         ThisDialog.setContentView(R.layout.dialog_team);
 
-        final EditText TeamA = ThisDialog.findViewById(R.id.addTeamNameA);
-        final EditText TeamB = ThisDialog.findViewById(R.id.addTeamNameB);
+        TeamOne = ThisDialog.findViewById(R.id.addTeamNameOne);
+        TeamTwo = ThisDialog.findViewById(R.id.addTeamNameTwo);
+        saveDialog = ThisDialog.findViewById(R.id.saveDialog);
 
-        Button saveDialog = ThisDialog.findViewById(R.id.saveDialog);
-
-        TeamA.setEnabled(true);
-        TeamB.setEnabled(true);
+        TeamOne.setEnabled(true);
+        TeamTwo.setEnabled(true);
         saveDialog.setEnabled(true);
 
         ThisDialog.show();
-
     }
+
 
     /**
      * save's name + add name's to TextView
      */
 
     public void saveDialog(View v) {
-        EditText addTeamA = ThisDialog.findViewById(R.id.addTeamNameA);
-        EditText addTeamB = ThisDialog.findViewById(R.id.addTeamNameB);
-
-        SharedPrefTeamOne(addTeamA.getText().toString());
-        SharedPrefTeamTwo(addTeamB.getText().toString());
-
-        TextView TeamA = findViewById(R.id.TeamOneEdit);
-        TextView TeamB = findViewById(R.id.TeamTwoEdit);
+        SharedPrefTeamOne(TeamOne.getText().toString());
+        SharedPrefTeamTwo(TeamTwo.getText().toString());
 
         SharedPreferences TeamName = getApplicationContext().getSharedPreferences("NAME", 0);
 
-        TeamA.setText(TeamName.getString("TeamOne", null));
-        TeamB.setText(TeamName.getString("TeamTwo", null));
-
+        TeamOneEdit.setText(TeamName.getString("TeamOne", null));
+        TeamTwoEdit.setText(TeamName.getString("TeamTwo", null));
 
         displayForTeamTwo(nameTeamOne);
         displayForTeamOne(nameTeamTwo);
 
         ThisDialog.cancel();
-
-
     }
 
     /**
@@ -185,19 +192,15 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         timer.start();
-
     }
 
     public void StopOne(View view) {
         timer.cancel();
-
-
     }
 
     public void ResetOne(View view) {
         TimeOne = 0;
         CounterOne.setText(String.valueOf(TimeOne));
-
     }
 
     /**
@@ -223,27 +226,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void StopTwo(View view) {
         timerTwo.cancel();
-
     }
 
     public void ResetTwo(View view) {
         TimeTwo = 0;
         CounterTwo.setText(R.string.FaultText);
-
     }
 
     /**
      * display team One
      */
-    public void displayForTeamOne(int TeamNameOne) {
-        TextView TeamB = findViewById(R.id.TeamOneEdit);
 
-        TeamB.setText(String.valueOf(TeamNameOne));
+    public void displayForTeamOne(int TeamNameOne) {
+        TeamOneEdit.setText(String.valueOf(TeamNameOne));
 
         SharedPreferences NameView = getApplicationContext().getSharedPreferences("NAME", 0);
-        TeamB.setText(NameView.getString("TeamOne", null));
-
-
+        TeamOneEdit.setText(NameView.getString("TeamOne", null));
     }
 
     /**
@@ -251,12 +249,10 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void displayForTeamTwo(int TeamNameTwo) {
-        TextView TeamB = findViewById(R.id.TeamTwoEdit);
-
-        TeamB.setText(String.valueOf(TeamNameTwo));
+        TeamTwoEdit.setText(String.valueOf(TeamNameTwo));
 
         SharedPreferences NameView = getApplicationContext().getSharedPreferences("NAME", 0);
-        TeamB.setText(NameView.getString("TeamTwo", null));
+        TeamTwoEdit.setText(NameView.getString("TeamTwo", null));
     }
 
     /**
@@ -267,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("NAME", 0);
         SharedPreferences.Editor prefEDIT = prefs.edit();
         prefEDIT.putString("TeamOne", TeamOne);
-        prefEDIT.commit();
+        prefEDIT.apply();
     }
 
     /**
@@ -278,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("NAME", 0);
         SharedPreferences.Editor prefEDIT = prefs.edit();
         prefEDIT.putString("TeamTwo", TeamTwo);
-        prefEDIT.commit();
+        prefEDIT.apply();
     }
 
     /**
@@ -286,8 +282,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void scoreTeamOne(int score) {
-        TextView scoreView = findViewById(R.id.scoreTeamOne);
-        scoreView.setText(String.valueOf(score));
+        scoreViewOne.setText(String.valueOf(score));
     }
 
     /**
@@ -295,8 +290,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void scoreTeamTwo(int score) {
-        TextView scoreView = findViewById(R.id.scoreTeamTwo);
-        scoreView.setText(String.valueOf(score));
+        scoreViewTwo.setText(String.valueOf(score));
     }
 
     public void reset(View view){
@@ -304,9 +298,10 @@ public class MainActivity extends AppCompatActivity {
         scoreTeamTwo = 0;
         scoreTeamOne(scoreTeamOne);
         scoreTeamTwo(scoreTeamTwo);
-
-
+        TeamOneEdit.setText(R.string.TeamName);
+        TeamTwoEdit.setText(R.string.TeamName);
+        SharedPrefTeamOne(TeamOneEdit.getText().toString());
+        SharedPrefTeamTwo(TeamTwoEdit.getText().toString());
     }
-
 }
 

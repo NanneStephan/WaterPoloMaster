@@ -98,28 +98,28 @@
                 <TextView
                     android:id="@+id/scoreTeamOne"
                     android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_height="@dimen/height"
+                    android:layout_marginLeft="@dimen/left"
+                    android:layout_marginRight="@dimen/right"
                     android:layout_weight="1"
                     android:background="@drawable/scorewhiteboard"
-                    android:elevation="20dp"
+                    android:elevation="@dimen/elevation"
                     android:gravity="center"
-                    android:text="0"
+                    android:text="@string/Zero"
                     android:textColor="@color/green"
                     android:textSize="80sp" />
 
                 <TextView
                     android:id="@+id/scoreTeamTwo"
                     android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_height="@dimen/height"
+                    android:layout_marginLeft="@dimen/left"
+                    android:layout_marginRight="@dimen/right"
                     android:layout_weight="1"
                     android:background="@drawable/scorewhiteboard"
-                    android:elevation="20dp"
+                    android:elevation="@dimen/elevation"
                     android:gravity="center"
-                    android:text="0"
+                    android:text="@string/Zero"
                     android:textColor="@color/green"
                     android:textSize="80sp" />
             </LinearLayout>
@@ -140,7 +140,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bgteamnamebutton"
                 android:onClick="teamOneAddOne"
-                android:text="+ 1 score"
+                android:text="@string/ScorePlus"
                 android:drawableRight="@drawable/plusicon"
                 android:textColor="@color/green" />
 
@@ -151,7 +151,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bgteamnamebutton"
                 android:onClick="teamTwoAddOne"
-                android:text="+ 1 score"
+                android:text="@string/ScorePlus"
                 android:textColor="@color/green"
                 android:drawableLeft="@drawable/plusicon"/>
 
@@ -171,7 +171,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bgteamnamebutton"
                 android:onClick="teamOneRemoveOne"
-                android:text="- 1 score"
+                android:text="@string/ScoreMinus"
                 android:textColor="@color/green"
                 android:drawableRight="@drawable/minusicon"/>
 
@@ -182,7 +182,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bgteamnamebutton"
                 android:onClick="teamTwoRemoveOne"
-                android:text="- 1 score"
+                android:text="@string/ScoreMinus"
                 android:textColor="@color/green"
                 android:drawableLeft="@drawable/minusicon"/>
 
@@ -205,7 +205,7 @@
                 android:layout_weight="1"
                 android:text="@string/Zero"
                 android:textColor="@color/green"
-                android:textSize="30sp"/>
+                android:textSize="@dimen/textSizeTimer"/>
 
             <TextView
                 android:id="@+id/timeCounterTwo"
@@ -216,9 +216,10 @@
                 android:layout_weight="1"
                 android:text="@string/Zero"
                 android:textColor="@color/green"
-                android:textSize="30sp"/>
+                android:textSize="@dimen/textSizeTimer"/>
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/scoreButtonAddThree"
             android:layout_width="match_parent"
@@ -236,28 +237,28 @@
                 >
                 <Button
                     android:onClick="StartOne"
-                    android:layout_margin="5dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="3dp"
+                    android:layout_margin="@dimen/marginTimer"
+                    android:layout_width="@dimen/widthTimer"
+                    android:layout_height="@dimen/heightTimer"
+                    android:padding="@dimen/paddingTimer"
                     android:drawableTop="@drawable/playtimer"
                     android:background="@drawable/bgteamnamebutton"
                     />
                 <Button
                     android:onClick="StopOne"
-                    android:layout_margin="5dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="3dp"
+                    android:layout_margin="@dimen/marginTimer"
+                    android:layout_width="@dimen/widthTimer"
+                    android:layout_height="@dimen/heightTimer"
+                    android:padding="@dimen/paddingTimer"
                     android:drawableTop="@drawable/stoptimer"
                     android:background="@drawable/bgteamnamebutton"
                     />
                 <Button
                     android:onClick="ResetOne"
-                    android:layout_margin="5dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="3dp"
+                    android:layout_margin="@dimen/marginTimer"
+                    android:layout_width="@dimen/widthTimer"
+                    android:layout_height="@dimen/heightTimer"
+                    android:padding="@dimen/paddingTimer"
                     android:drawableTop="@drawable/ic_restore_black_24dp"
                     android:background="@drawable/bgteamnamebutton"
                     />
@@ -273,36 +274,33 @@
                 >
                 <Button
                     android:onClick="StartTwo"
-                    android:layout_margin="5dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="3dp"
+                    android:layout_margin="@dimen/marginTimer"
+                    android:layout_width="@dimen/widthTimer"
+                    android:layout_height="@dimen/heightTimer"
+                    android:padding="@dimen/paddingTimer"
                     android:background="@drawable/bgteamnamebutton"
                     android:drawableTop="@drawable/playtimer"
                     />
                 <Button
                     android:onClick="StopTwo"
-                    android:layout_margin="5dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="3dp"
+                    android:layout_margin="@dimen/marginTimer"
+                    android:layout_width="@dimen/widthTimer"
+                    android:layout_height="@dimen/heightTimer"
+                    android:padding="@dimen/paddingTimer"
                     android:drawableTop="@drawable/stoptimer"
                     android:background="@drawable/bgteamnamebutton"
                     />
                 <Button
                     android:onClick="ResetTwo"
-                    android:layout_margin="5dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="3dp"
+                    android:layout_margin="@dimen/marginTimer"
+                    android:layout_width="@dimen/widthTimer"
+                    android:layout_height="@dimen/heightTimer"
+                    android:padding="@dimen/paddingTimer"
                     android:drawableTop="@drawable/ic_restore_black_24dp"
                     android:background="@drawable/bgteamnamebutton"
                     />
             </LinearLayout>
-
-
         </LinearLayout>
-
 
         <TextView
             android:id="@+id/status"
@@ -312,9 +310,6 @@
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
-
-
     </RelativeLayout>
-
 </ScrollView>
 
